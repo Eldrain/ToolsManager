@@ -2,6 +2,7 @@ package framework;
 
 import toolmanager.Client;
 
+import java.io.File;
 import java.util.Queue;
 
 /**
@@ -9,8 +10,15 @@ import java.util.Queue;
  */
 public class Tool extends Thread {
     private ProcessBuilder prBuilder;
+    private String nameTool;
     private Queue<Client> clients;
     boolean work;
+
+    public Tool(String path, String nameTool) {
+        this.nameTool = nameTool;
+        prBuilder = new ProcessBuilder();
+        prBuilder.directory(new File(path));
+    }
 
     @Override
     public void run() {
@@ -26,7 +34,8 @@ public class Tool extends Thread {
     }
 
     private String runTool(String[] args) {
-        Process
+        prBuilder.command();
+        Process p =
     }
 
     private void returnResults(String res, Client client) {
